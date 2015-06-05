@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+    <title>TMN Project</title>
+</head>
+<body ng-controller="DefaultCtrl">
+
+<div id="container">
+    <div class="wrapper-player">
+        <div class="logo">
+        </div>
+        <div ng-init="players = [
+                {
+                    Id: 502082,
+                    Name: 'Lonnie Chisenhall',
+                    Thumbnail: 'http://mlb.mlb.com/images/players/mugshot/ph_502082.jpg',
+                    Img: 30523
+                    },
+                {
+                    Id: 457706,
+                    Name: 'Austin Jackson',
+                    Thumbnail: 'http://mlb.mlb.com/images/players/mugshot/ph_457706.jpg',
+                    Img: 29453
+                },
+                {
+                    Id: 452655,
+                    Name: 'Denard Span',
+                    Thumbnail: 'http://mlb.mlb.com/images/players/mugshot/ph_452655.jpg',
+                    Img: 29087
+                    }
+            ]">
+        <ul class="players-list">
+
+                <li ng-repeat="player in players">
+                    <div class="player">
+                            <div class="player-frame">
+                                <a href="#/detail/{{player.Id}}/{{player.Img}}/{{player.Name}}">
+                                    <img src="{{player.Thumbnail}}" />
+                                    <span class="playerName">{{player.Name}}</span>
+                                </a>
+                            </div>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+
+
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div ng-view></div>
+</div>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/default.js"></script>
+    <script src="controllers/detail.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<div ng-controller="DetailCtrl">
+    <div class="wrapper-player">
+        <div class="player-detail-wrapper">
+            <div id="playerPicture">
+                <div class="player-picture"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/mlb/players/full/{{img}}.png&w=350&h=254" alt="" /></div>
+                <div class="player-data">
+                    <span><img src="{{playerImage}}" /></span>
+                    <span class="h1">{{name}}</span>
+                    <hr />
+
+                </div>
+            </div>
+            <div id="playerStats">
+                <div class="table-responsive row top-buffer-10">
+                    <div class="table-wrapper">
+                        <table class="table table-striped table-hover no-margin table-responsive">
+                            <thead>
+                            <tr>
+
+                                <th><a href="" ng-click="predicate = 'date'; reverse = false;">DATE</a></th>
+                                <th class="hidden-phone"><a href="" ng-click="predicate = 'OPP'; reverse = false;">OPP</a></th>
+                                <th class="hidden-phone"><a href="" ng-click="predicate = 'RBI'; reverse = false;">RBI</a></th>
+                                <th class="hidden-phone"><a href="" ng-click="predicate = 'AB'; reverse = false;">AB</a></th>
+                                <th class="hidden-phone"><a href="" ng-click="predicate = 'HR'; reverse = false;">HR</a></th>
+                                <th class="hidden-phone"><a href="" ng-click="predicate = 'H'; reverse = false;">H</a></th>
+                                <th class="hidden-phone"><a href="" ng-click="predicate = 'AVG'; reverse = false;">AVG</a></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="game in games | orderBy: predicate:reverse | limitTo: limit" class="animate-repeat">
+
+                                <td>
+                                    <span class="name">{{game.date}}</span>
+                                </td>
+                                <td class="hidden-phone opp-img"><img src="{{game.oppImage}}" alt="{{game.opp}}" title="{{game.opp}}" /></td>
+                                <td class="hidden-phone">
+                                    {{game.RBI}}
+                                </td>
+                                <td class="hidden-phone">{{game.AB}}</td>
+                                <td class="hidden-phone">
+                                    {{game.HR}}
+                                </td>
+                                <td class="hidden-phone">
+                                    {{game.H}}
+                                </td>
+                                <td class="hidden-phone">
+                                    {{( game.H / game.AB) >= 0 ? ( game.H / game.AB | number: 3) : 0}}
+
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div class="load-more">
+                    <a href="javascript:void(0);" ng-click="loadMore()">Show more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
